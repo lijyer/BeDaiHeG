@@ -1,0 +1,22 @@
+.top{
+    background: url(../images/bg.gif) no-repeat;
+    width:1518px;
+    height: 150px;
+}
+.logo{
+	background: url(../images/logo.png) no-repeat;
+	width: 450px;
+	height: 150px;
+	margin-top: -120px;
+    margin-left: 200px;
+}
+.input{
+	background:blue;
+    margin-right: 200px;
+	float: right;
+	margin-top: 100px;
+}
+
+
+
+
