@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/public.css">
+	<link rel="stylesheet" type="text/css" href="css/bbs.css">
+</head>
+<body>
+	<div class="right">
+	    <h1>领导信箱
+	        <span>LEADER EMAIL</span></h1>
+	    <p class="bbstab">
+	        <a href="#" class="now" id="b0">我要写信</a>
+	        <a href="#" id="b1" class="">查看回复</a>
+	    </p>
+	    <div class="bbs">
+	        <form action="" method="post" name="myform">
+	            <table width="100%" border="0" cellspacing="1" cellpadding="3" class="errorbbs" style="display: block;">
+	                <tbody>
+	                    <tr>
+	                        <td height="40" align="right">真实姓名：</td>
+	                        <td width="215" height="43" align="left">
+	                            <input name="realname" type="text" id="realname" size="30">
+	                            <span class="red">*</span></td>
+	                        <td width="111" align="right">身份证号：</td>
+	                        <td width="341" align="left">
+	                            <input name="idnum" type="text" id="idnum" size="30">
+	                            <span class="red">*</span></td>
+	                    </tr>
+	                    <tr>
+	                        <td height="40" align="right">联系电话：</td>
+	                        <td>
+	                            <input name="phonenum" type="text" id="phonenum" size="30"></td>
+	                        <td align="right">Email：</td>
+	                        <td>
+	                            <input name="email" type="text" id="email" size="30"></td>
+	                    </tr>
+	                    <tr>
+	                        <td width="112" height="103" align="right">咨询内容：</td>
+	                        <td colspan="3">
+	                            <textarea name="message" cols="75" rows="5" id="message"></textarea>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td height="40" align="right">验证码：</td>
+	                        <td colspan="3">
+	                            <input name="code" type="text" id="codefield" size="10">
+	                            <span style="margin-top:10px;">
+	                                <img id="code_img" onclick="this.src=this.src+&quot;&amp;&quot;+Math.random()" src="http://www.beidaihe.gov.cn/api.php?op=checkcode&amp;code_len=4&amp;font_size=20&amp;width=130&amp;height=50&amp;font_color=&amp;background=" style="margin-bottom: -15px;"></span>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <td height="56" align="right">&nbsp;</td>
+	                        <td colspan="3">
+	                            <input type="submit" name="submit" id="submit" value="提交留言" class="sub" onclick="javascript:return identify();"></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </form>
+
+	        <form action="http://www.beidaihe.gov.cn/index.php?m=content&amp;c=index&amp;a=mail_review" id="mail_review">
+	            <table width="100%" border="0" cellspacing="1" cellpadding="3" class="errorbbs" style="display: none;">
+	                <tbody>
+	                    <tr>
+	                        <td width="118" height="50" align="right">真实姓名：</td>
+	                        <td width="184" height="50" align="left">
+	                            <input id="c_realname" type="text" size="30"></td>
+	                        <td width="95" align="right">身份证号：</td>
+	                        <td width="382" align="left">
+	                            <input id="c_idnum" type="text" size="30"></td>
+	                    </tr>
+	                    <tr>
+	                        <td height="54" align="right">&nbsp;</td>
+	                        <td colspan="3">
+	                            <input type="button" id="c_review" value="查看回复" class="check"></td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </form>
+	    </div>
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bm" id="review" style="display:none;margin-bottom:60px;">
+	        <tbody>
+	            <tr>
+	                <th width="50%" height="36" scope="col">信件内容</th>
+	                <th width="50%" scope="col">回复内容</th></tr>
+	        </tbody>
+	    </table>
+	</div>
+</body>
+<script type="text/javascript">
+ //tab切换
+ var oli = document.getElementsByTagName("a");//获取tab列表
+ var odiv = document.getElementsByClassName("errorbbs");//获取tab内容列表
+    for(var i=0 ; i<oli.length ; i++){
+         oli[i].index = i;//定义index变量，以便让tab按钮和tab内容相互对应
+         oli[i].onclick = function( ){//移除全部tab样式和tab内容
+         for(var i =0; i < oli.length; i++){
+             oli[i].className = "";
+             odiv[i].style.display = "none";
+             }
+        this.className = "active";//为当前tab添加样式
+        odiv[this.index].style.display="block";//显示当前tab对应的内容
+                }
+            }
+   //表单验证
+   var realname = document.getElementById("realname");
+   var idnum = document.getElementById("idnum");
+   var phonenum = document.getElementById("phonenum");
+   var email = document.getElementById("email");
+   var codefield =document.getElementById("codefield");
+   var crealname = document.getElementById("c_realname");
+   var cidnum = document.getElementById("c_idnum");
+   //姓名验证
+   realname.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   realname.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("姓名不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //身份证验证
+   idnum.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   idnum.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("身份证不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //联系电话验证
+   phonenum.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   phonenum.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("联系电话不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //Email验证
+   email.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   email.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("Email不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //验证码
+   codefield.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   codefield.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("验证码不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //C姓名验证
+   crealname.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   crealname.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("姓名不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+    //C身份验证
+   cidnum.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   cidnum.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("身份证不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   
+</script>
+
+</html>
