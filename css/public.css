@@ -1,5 +1,4 @@
 @charset "utf-8";
-/*公共样式 */
 *{
 	padding:0;
 	margin:0;
@@ -28,7 +27,6 @@ body{
 	overflow: auto;
 	*overflow:hidden
 	}
-/*头部样式*/
 .top{
 	height:150px;
 	background:url(../images/logo.png) 20px 30px no-repeat;
@@ -78,9 +76,9 @@ body{
 	
 	}
 .top .ss .ssbtn:hover{
-	filter:alpha(opacity=80); /*支持 IE 浏览器*/
--moz-opacity:0.80; /*支持 FireFox 浏览器*/
-opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
+	filter:alpha(opacity=80); 
+-moz-opacity:0.80; 
+opacity:0.80; 
 	}
  .nav>li{
 	float:left;
@@ -102,9 +100,8 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 	
 	}
 .top .nav>li:hover{
-	background:url(../images/menubg.png) no-repeat;
 	color:#fff;
-	cursor:pointer;
+	cursor:pointer;	
 	}
 .top .nav>li:hover>a{
 	
@@ -156,7 +153,7 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 .top .pull{
 	margin-left:140px
 	}
-/*面包屑样式*/	
+
 .bread{
 	border-bottom:1px solid #eee;
 	padding:5px 0px 10px 0px;
@@ -172,7 +169,7 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 	text-decoration:underline;
 	}	
 	
-/*弹出窗口样式*/
+
 .theme-popover {
 	z-index:9999;
 	position:fixed;
@@ -220,7 +217,7 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 	color:#444;
 }
 
-/*分页样式*/
+
 .page{
 	float:right;
 	margin-right:10px;
@@ -240,7 +237,7 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 	}
 
 	
-/*底部样式*/	
+
 .footer{
 	border-top:2px solid #88c2e6;
 	background-color:#ededed;
@@ -291,7 +288,7 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 .yf{
 	color:#A37632
 	}
-/*-------------------------------------------------submiterror--------------------------------------------------*/
+
 .errorbbs{
 	margin:auto;
 	
@@ -352,3 +349,20 @@ opacity:0.80; /*支持 Chrome, Opera, Safari 等浏览器*/
 .errorbbs td{
 	border-bottom:1px dashed #ccc
 	}
+  .gwyw a{
+    position:absolute;
+    top:150px;
+    right:10px;
+  }
+  .gwywj a{
+    position:absolute;
+    top:253px;
+    right:10px;
+  }
+   .receiveQestion{
+    width: 1060px;
+  }
+  .receiveQestion img{
+    width: 100%;
+    height: 100%;
+  }
