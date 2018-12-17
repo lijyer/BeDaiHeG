@@ -42,7 +42,7 @@
                <tr>
                 <td width="112" height="103" align="right">咨询内容：</td>
                 <td colspan="3">
-                 <textarea name="consultcontent" cols="95" rows="5" id="consultcontent"></textarea>
+                 <textarea name="consultcontent" cols="95" rows="5" id="consultcontent" value=""></textarea>
                 </td>
             </tr>
               
@@ -162,6 +162,7 @@
          <!------------------------逾期未办------------------------>
           <div class="bbs" style="display:none;">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bm">
+            	
           </div>
     </div>
 	</body>
@@ -169,6 +170,11 @@
 	  var box = document.getElementById("box");
 	  var ali = box.getElementsByTagName("a");
 	  var odiv =document.getElementsByClassName("bbs");
+	  var realname = document.getElementById("realname");
+      var idnum = document.getElementById("idnum");
+      var phonenum = document.getElementById("phonenum");
+      var consultcontent =document.getElementById("consultcontent");
+      //Tab切换
  	     for(var i=0 ; i<ali.length ; i++){
  	     	ali[i].index = i;
  	     	ali[i].onclick = function(){
@@ -179,6 +185,59 @@
  	     		odiv[this.index].style.display="block";
  	     	}
  	     }
-	
+ 	    
+ 	    //姓名验证
+   realname.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   realname.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("姓名不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //身份证验证
+   idnum.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   idnum.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("身份证不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //联系电话验证
+   phonenum.onfocus = function(){
+   	this.value = ("");
+   	this.style.color = "";
+   	this.style.border = "";
+   }
+   phonenum.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("联系电话不能为空！");
+   		this.style.color = "red";
+   		this.style.border = "1px solid red";
+   	}
+   }
+   //咨询内容验证
+   consultcontent.onfocus = function(){
+       this.value = ("");
+       this.style.color ="";
+       this.style.border ="";
+     }
+   consultcontent.onblur = function(){
+   	if(this.value ==""){
+   		this.value = ("咨询内容不能为空！");
+   		this.style.color ="red";
+   		this.style.border ="1px solid red";
+   	}
+   }
 	</script>
+
 </html>
